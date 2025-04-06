@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tratar Bilhete de Identidade</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1e3c72;
+      color: white;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .form-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 25px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #333;
+      color: white;
+    }
+
+    button[type="submit"] {
+      background: #2575fc;
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover {
+      background: #6a11cb;
+    }
+
+    button[type="reset"] {
+      background: #ff9900;
+      font-size: 16px;
+    }
+
+    button[type="reset"]:hover {
+      background: #ff6600;
+    }
+
+    .voltar-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff9900;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .voltar-btn:hover {
+      background-color: #ff6600;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tratar Bilhete de Identidade (BI)</h1>
+  </header>
+
+  <div class="form-container">
+    <h2>Preencha os dados abaixo:</h2>
+    <form>
+      <label for="nome">Nome Completo:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="dataNascimento">Data de Nascimento:</label>
+      <input type="date" id="dataNascimento" name="dataNascimento" required>
+
+      <label for="nomePai">Nome do Pai:</label>
+      <input type="text" id="nomePai" name="nomePai" required>
+
+      <label for="nomeMae">Nome da Mãe:</label>
+      <input type="text" id="nomeMae" name="nomeMae" required>
+
+      <label for="naturalidade">Naturalidade:</label>
+      <input type="text" id="naturalidade" name="naturalidade" required>
+
+      <label for="altura">Altura (cm):</label>
+      <input type="number" id="altura" name="altura" required>
+
+      <label for="dataEmissao">Data de Emissão:</label>
+      <input type="date" id="dataEmissao" name="dataEmissao" required>
+
+      <label for="dataExpiracao">Data de Expiração:</label>
+      <input type="date" id="dataExpiracao" name="dataExpiracao" required>
+
+      <label for="impressaoDigital">Impressão Digital:</label>
+      <input type="file" id="impressaoDigital" name="impressaoDigital" required>
+
+      <label for="fotoMeioCorpo">Foto Meio Corpo:</label>
+      <input type="file" id="fotoMeioCorpo" name="fotoMeioCorpo" required>
+
+      <button type="submit">Enviar Solicitação</button>
+      <button type="reset">Limpar Formulário</button>
+    </form>
+
+    <button class="voltar-btn" onclick="window.location.href='index.html'">Voltar para a Tela Principal</button>
+  </div>
+
+</body>
+</html>

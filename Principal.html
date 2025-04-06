@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portal de Serviços – Governo Digital de Moçambique</title>
+  <style>
+    /* Fundo animado */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: white;
+      padding-bottom: 80px; /* Espaço para o rodapé */
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .botoes-tratamento {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 30px 0;
+    }
+
+    .botoes-tratamento button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #2575fc;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .botoes-tratamento button:hover {
+      background: #6a11cb;
+      transform: scale(1.05);
+    }
+
+    .form-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 25px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 30px;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #333;
+      color: white;
+    }
+
+    button[type="submit"],
+    button[type="reset"] {
+      background: #2575fc;
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover,
+    button[type="reset"]:hover {
+      background: #6a11cb;
+    }
+
+    /* Seção de Suporte Técnico */
+    .suporte-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 25px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 700px;
+      margin-top: 40px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .suporte-container h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .suporte-container p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #f0f0f0;
+      margin-bottom: 20px;
+    }
+
+    .suporte-container ul {
+      list-style-type: none;
+      padding: 0;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .suporte-container ul li {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .suporte-container .contact-info {
+      font-size: 1.1rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .suporte-container .contact-info p {
+      margin-bottom: 10px;
+    }
+
+    /* Botão de exibição do Suporte */
+    .mostrar-suporte-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      background: #6a11cb;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .mostrar-suporte-btn:hover {
+      background: #2575fc;
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bem-vindo ao Governo Digital de Moçambique</h1>
+  </header>
+
+  <div class="container">
+    <!-- Botões horizontais -->
+    <div class="botoes-tratamento">
+      <button onclick="location.href='tratar-bi.html'">Tratar BI</button>
+      <button onclick="location.href='tratar-nuit.html'">Tratar NUIT</button>
+      <button onclick="location.href='tratar-passaporte.html'">Tratar Passaporte</button>
+      <button onclick="location.href='tratar-carta-conducao.html'">Tratar Carta de Condução</button>
+    </div>
+
+    <!-- Formulário -->
+    <div class="form-container">
+      <h2>Renovar Documento</h2>
+      <form id="solicitacaoForm" onsubmit="enviarSolicitacao(event)">
+        <label for="tipoDocumento">Tipo de Documento:</label>
+        <select id="tipoDocumento" name="tipoDocumento" required>
+          <option value="">Selecione</option>
+          <option value="NUIT">NUIT</option>
+          <option value="BI">Bilhete de Identidade</option>
+          <option value="Carta de Condução">Carta de Condução</option>
+          <option value="Passaporte">Passaporte</option>
+        </select>
+
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="date" id="dataNascimento" name="dataNascimento" required>
+
+        <label for="genero">Gênero:</label>
+        <select id="genero" name="genero" required>
+          <option value="">Selecione</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outro">Outro</option>
+        </select>
+
+        <label for="nacionalidade">Nacionalidade:</label>
+        <input type="text" id="nacionalidade" name="nacionalidade" required>
+
+        <label for="detalhes">Informações Adicionais:</label>
+        <textarea id="detalhes" name="detalhes" rows="4" placeholder="Descreva detalhes da solicitação..."></textarea>
+
+        <button type="submit">Enviar Solicitação</button>
+      </form>
+    </div>
+
+    <!-- Seção de Suporte Técnico -->
+    <div id="suporte" class="suporte-container" style="display: none;">
+      <h3>Suporte Técnico – Governo Digital de Moçambique</h3>
+      <p>Prezado usuário, caso não tenha recebido um retorno sobre sua solicitação dentro de 8 horas, pedimos que entre em contato com o suporte técnico da instituição responsável. Nossa equipe está disponível para ajudá-lo com qualquer problema ou dúvida que você possa ter durante o processo.</p>
+
+      <ul>
+        <li><strong>Bilhete de Identidade (BI):</strong>📧 dique@identidade.mz</li>
+        <li><strong>Autoridade Tributária:</strong> 📧autoridade@tributaria.mz</li>
+        <li><strong>Carta de Condução (INATER):</strong> 📧inater@conducao.mz</li>
+        <li><strong>Passaporte:</strong>📧 passaporte@identidade.mz</li>
+      </ul>
+
+      <div class="contact-info">
+        <p><strong>Horário de Atendimento:</strong> Segunda a Sexta-feira, das 8:00 às 17:00</p>
+        <p><strong>Telefone de Suporte:</strong> 📞☎+258 84 4909293</p>
+      </div>
+    </div>
+
+    <!-- Botão para mostrar o suporte técnico -->
+    <button class="mostrar-suporte-btn" onclick="mostrarSuporte()">Mostrar Suporte Técnico</button>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    @Todos os direitos reservados – Governo de Moçambique.
+  </footer>
+
+  <script>
+    <!-- Substitua seu <script> atual por este aqui no final da página -->
+        function enviarSolicitacao(event) {
+          event.preventDefault();
+      
+          // Obter os dados do formulário
+          const tipoDocumento = document.getElementById('tipoDocumento').value;
+          const nome = document.getElementById('nome').value;
+          const dataNascimento = document.getElementById('dataNascimento').value;
+          const genero = document.getElementById('genero').value;
+          const nacionalidade = document.getElementById('nacionalidade').value;
+          const detalhes = document.getElementById('detalhes').value;
+      
+          // Criar mensagem de confirmação
+          const mensagem = `
+      Confirme os dados preenchidos:
+      
+      📄 Tipo de Documento: ${tipoDocumento}
+      👤 Nome Completo: ${nome}
+      📅 Data de Nascimento: ${dataNascimento}
+      ⚥ Gênero: ${genero}
+      🌍 Nacionalidade: ${nacionalidade}
+      📝 Informações Adicionais: ${detalhes || 'Nenhuma'}
+      
+      Deseja realmente enviar a solicitação?
+          `;
+      
+          // Exibir confirmação
+          if (confirm(mensagem)) {
+            alert("✅ Solicitação enviada com sucesso!");
+            document.getElementById('solicitacaoForm').reset();
+          } else {
+            alert("❌ Envio cancelado. Verifique os dados.");
+          }
+        }
+      
+        function mostrarSuporte() {
+          const suporte = document.getElementById('suporte');
+          suporte.style.display = suporte.style.display === 'none' ? 'block' : 'none';
+        }
+      </script>
+      
+</body>
+</html>

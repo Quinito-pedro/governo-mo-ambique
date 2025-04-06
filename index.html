@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Função para exibir a seção de cadastro
+        function showCadastro() {
+            document.getElementById('cadastro').style.display = 'block';
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('loginButton').style.display = 'block';
+            document.getElementById('cadastroButton').style.display = 'none';
+        }
+
+        // Função para exibir a seção de login
+        function showLogin() {
+            document.getElementById('cadastro').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+            document.getElementById('loginButton').style.display = 'none';
+            document.getElementById('cadastroButton').style.display = 'block';
+        }
+
+        // Função para realizar o cadastro
+        function cadastro() {
+            const nome = document.getElementById('cadastroNome').value;
+            const email = document.getElementById('cadastroEmail').value;
+            const password = document.getElementById('cadastroPassword').value;
+            const confirmPassword = document.getElementById('cadastroConfirmPassword').value;
+
+            if (nome && email && password && confirmPassword) {
+                if (password === confirmPassword) {
+                    // Salva o nome, email e senha no localStorage
+                    localStorage.setItem('nome', nome);
+                    localStorage.setItem('email', email);
+                    localStorage.setItem('senha', password);  // Salva a senha para validação
+
+                    alert("Cadastro realizado com sucesso!");
+                    window.location.href = 'principal.html';  // Redireciona para a tela principal
+                } else {
+                    alert("As senhas não coincidem.");
+                }
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        }
+
+        // Função para realizar o login
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (email && password) {
+                // Verifica se o email e a senha correspondem aos dados armazenados no localStorage
+                if (localStorage.getItem('email') === email && localStorage.getItem('senha') === password) {
+                    alert("Login bem-sucedido!");
+                    window.location.href = 'principal.html';  // Redireciona para a tela principal
+                } else {
+                    alert("Email ou senha inválidos.");
+                }
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        }
+
+        // Função para recuperar a senha
+        function recuperarSenha() {
+            const email = document.getElementById('loginEmail').value;
+
+            if (email) {
+                // Verifica se o email existe no localStorage
+                if (localStorage.getItem('email') === email) {
+                    alert(`Instruções para recuperação de senha foram enviadas para ${email}`);
+                    // Redireciona para a tela de login após a recuperação
+                    showLogin();
+                } else {
+                    alert("Email não encontrado. Verifique se o email está correto.");
+                }
+            } else {
+                alert("Por favor, preencha o campo de email.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <button id="cadastroButton" onclick="showCadastro()">Cadastrar</button>
+            <button id="loginButton" onclick="showLogin()" style="display:none;">Login</button>
+
+            <!-- Seção de Cadastro -->
+            <div id="cadastro" style="display:none;">
+                <h2>Cadastro</h2>
+                <form onsubmit="event.preventDefault(); cadastro();">
+                    <input type="text" id="cadastroNome" placeholder="Nome Completo" required>
+                    <input type="email" id="cadastroEmail" placeholder="Email" required>
+                    <input type="password" id="cadastroPassword" placeholder="Senha" required>
+                    <input type="password" id="cadastroConfirmPassword" placeholder="Confirmar Senha" required>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+
+            <!-- Seção de Login -->
+            <div id="login">
+                <h2>Login</h2>
+                <form onsubmit="event.preventDefault(); login();">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <input type="password" id="loginPassword" placeholder="Senha" required>
+                    <button type="submit">Entrar</button>
+                </form>
+                <button onclick="recuperarSenha()">Recuperar Senha</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
